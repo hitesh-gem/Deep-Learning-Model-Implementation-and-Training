@@ -1,0 +1,12 @@
+8. Model Checkpointing
+SAVE_PATH = "deep_cnn_cifar10.pth"
+torch.save(
+    {
+        "epoch": EPOCHS,
+        "model_state_dict": model.state_dict(),
+        "optimizer_state_dict": optimizer.state_dict(),
+        "val_acc": history["val_acc"][-1],
+    },
+    SAVE_PATH,
+)
+print(f"[INFO] Saved fine-tuned model checkpoint to '{SAVE_PATH}'.")
