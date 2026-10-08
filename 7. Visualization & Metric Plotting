@@ -1,0 +1,54 @@
+7. Visualization & Metric Plotting
+def plot_metrics(history):
+    epochs = range(1, len(history["train_loss"]) + 1)
+
+    plt.figure(figsize=(14, 5))
+
+    # Loss Plot
+    plt.subplot(1, 2, 1)
+    plt.plot(
+        epochs, history["train_loss"], "b-o", label="Training Loss", linewidth=2
+    )
+    plt.plot(
+        epochs,
+        history["val_loss"],
+        "r--s",
+        label="Validation Loss",
+        linewidth=2,
+    )
+    plt.title("Cross-Entropy Loss vs. Epochs", fontsize=12, fontweight="bold")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.grid(True, linestyle="--", alpha=0.6)
+    plt.legend()
+
+    # Accuracy Plot
+    plt.subplot(1, 2, 2)
+    plt.plot(
+        epochs,
+        history["train_acc"],
+        "b-o",
+        label="Training Accuracy",
+        linewidth=2,
+    )
+    plt.plot(
+        epochs,
+        history["val_acc"],
+        "r--s",
+        label="Validation Accuracy",
+        linewidth=2,
+    )
+    plt.title(
+        "Classification Accuracy vs. Epochs", fontsize=12, fontweight="bold"
+    )
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy (%)")
+    plt.grid(True, linestyle="--", alpha=0.6)
+    plt.legend()
+
+    plt.tight_layout()
+    plt.savefig("training_performance_curves.png", dpi=300)
+    plt.show()
+
+
+plot_metrics(history)
