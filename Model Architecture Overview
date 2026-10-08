@@ -1,0 +1,15 @@
+
+# Model Architecture Overview
+# =====================================================================================
+Input (3x32x32)
+   │
+   ├── [Conv Block 1]  (Conv2D 3->32 -> BN -> ReLU) x 2 ➔ MaxPool(2x2) ➔ Dropout(0.2)
+   ├── [Conv Block 2]  (Conv2D 32->64 -> BN -> ReLU) x 2 ➔ MaxPool(2x2) ➔ Dropout(0.3)
+   ├── [Conv Block 3]  (Conv2D 64->128 -> BN -> ReLU) x 1 ➔ MaxPool(2x2) ➔ Dropout(0.4)
+   │
+   ├── Flatten (2048 units)
+   ├── [Dense Layer]   Linear(2048 -> 512) ➔ BatchNorm1D ➔ ReLU ➔ Dropout(0.5)
+   └── [Output Layer]  Linear(512 -> 10) ➔ Raw Logits
+
+
+
